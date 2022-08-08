@@ -5,19 +5,14 @@ class Solution {
         for c in s {
             if stack.isEmpty {
                 stack.append(c)
-            } else if stack[stack.endIndex - 1] == "(" && c == ")" {
-                stack.popLast()
-            } else if stack[stack.endIndex - 1] == "{" && c == "}" {
-                stack.popLast()
-            } else if stack[stack.endIndex - 1] == "[" && c == "]" {
+            } else if (stack.last == "(" && c == ")")
+                || (stack.last == "{" && c == "}")
+                || (stack.last == "[" && c == "]") {
                 stack.popLast()
             } else {
                 stack.append(c)
             }
         }
-        if stack.count > 0 {
-            return false
-        }
-        return true
+        return stack.isEmpty
     }
 }
