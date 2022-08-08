@@ -8,7 +8,7 @@ class Solution {
             } else if (stack.last == "(" && c == ")")
                 || (stack.last == "{" && c == "}")
                 || (stack.last == "[" && c == "]") {
-                stack.popLast()
+                stack.removeLast()
             } else {
                 stack.append(c)
             }
