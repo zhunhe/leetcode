@@ -1,20 +1,20 @@
 class Solution {
     func plusOne(_ digits: [Int]) -> [Int] {
         var carry = false
-        var answer = Array(digits.reversed())
-        for i in answer.indices {
+        var answer = digits
+        for i in stride(from: answer.count - 1, to: -1, by: -1) {
             if answer[i] == 9 {
-                answer[i] = 0
                 carry = true
+                answer[i] = 0
                 continue
             }
-            answer[i] += 1
             carry = false
+            answer[i] += 1
             break
         }
         if carry {
-            answer.append(1)
+            answer.insert(1, at: 0)
         }
-        return Array(answer.reversed())
+        return answer
     }
 }
