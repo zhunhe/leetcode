@@ -1,6 +1,5 @@
 class Solution {
     func longestCommonPrefix(_ strs: [String]) -> String {
-        guard strs.count > 1 else { return strs[0] }
         let sorted = strs.sorted{ $0.count < $1.count }
         var answer = ""
         for len in 0 ..< sorted[0].count {
