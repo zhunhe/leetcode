@@ -4,7 +4,7 @@ class Solution {
         var before2 = 2
         var before1 = 3
         var answer = 5
-        for i in 4 ... n {
+        for _ in 4 ... n {
             answer = before2 + before1
             before2 = before1
             before1 = answer
