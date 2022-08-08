@@ -1,8 +1,6 @@
 class Solution {
     func isPalindrome(_ x: Int) -> Bool {
-        let s = String(x)
-        let reversed = String(String(x).reversed())
-        if s == reversed {
+        if String(x) == String(String(x).reversed()) {
             return true
         }
         return false
