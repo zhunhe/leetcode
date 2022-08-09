@@ -21,7 +21,6 @@ class Solution {
             if leftDepth == -1 { return -1 }
             let rightDepth = dfs(cur.right)
             if rightDepth == -1 { return -1 }
-            
             if abs(leftDepth - rightDepth) > 1 { return -1 }
             return max(leftDepth, rightDepth) + 1
         }
