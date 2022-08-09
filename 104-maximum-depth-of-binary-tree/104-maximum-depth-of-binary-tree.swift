@@ -15,10 +15,14 @@
  */
 class Solution {
     func maxDepth(_ root: TreeNode?) -> Int {
-        func dfs(_ node: TreeNode?, _ count: Int) -> Int {
-            guard let cur = node else { return count }
-            return max(dfs(cur.left, count + 1), dfs(cur.right, count + 1))
+        var answer = 0
+        func dfs(_ node: TreeNode?, _ count: Int) {
+            answer = max(answer, count)
+            guard let cur = node else { return }
+            dfs(cur.left, count + 1)
+            dfs(cur.right, count + 1)
         }
-        return dfs(root, 0)
+        dfs(root, 0)
+        return answer
     }
 }
