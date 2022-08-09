@@ -18,10 +18,8 @@ class Solution {
         func dfs(_ node: TreeNode?) -> Int {
             guard let cur = node else { return 0 }
             let leftDepth = dfs(cur.left)
-            if leftDepth == -1 { return -1 }
             let rightDepth = dfs(cur.right)
-            if rightDepth == -1 { return -1 }
-            if abs(leftDepth - rightDepth) > 1 { return -1 }
+            guard leftDepth != -1 && rightDepth != -1 && abs(leftDepth - rightDepth) <= 1 else { return -1 }
             return max(leftDepth, rightDepth) + 1
         }
         return dfs(root) != -1
