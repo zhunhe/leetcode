@@ -15,15 +15,26 @@
  */
 class Solution {
     func isSameTree(_ p: TreeNode?, _ q: TreeNode?) -> Bool {
-        func recursion(_ p: TreeNode?, _ q: TreeNode!) -> Bool {
-            if p == nil && q == nil { return true }
-            guard let first = p else { return false }
-            guard let second = q else { return false }
-            if first.val != second.val { return false }
-            if !recursion(first.left, second.left) { return false }
-            if !recursion(first.right, second.right) { return false }
-            return true
+        var answer = true
+        func recursion(_ p: TreeNode?, _ q: TreeNode!) {
+            if !answer { return }
+            if p == nil && q == nil { return }
+            guard let first = p else {
+                answer = false
+                return
+            }
+            guard let second = q else {
+                answer = false
+                return
+            }
+            if first.val != second.val {
+                answer = false
+                return
+            }
+            recursion(first.left, second.left)
+            recursion(first.right, second.right)
         }
-        return recursion(p, q)
+        recursion(p, q)
+        return answer
     }
 }
