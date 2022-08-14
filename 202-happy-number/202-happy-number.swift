@@ -1,11 +1,6 @@
 class Solution {
     func isHappy(_ n: Int) -> Bool {
-        var number: Int
-        if n < 10 {
-            number = n * n
-        } else {
-            number = n
-        }
+        var number = n
         while number != 1 {
             print(number)
             var tmp = number
