@@ -3,11 +3,7 @@ class Solution {
         var s = ""
         var n = n
         while (n > 0) {
-            if n & 1 == 1 {
-                s += "1"
-            } else {
-                s += "0"
-            }
+            s += (n & 1 == 1) ? "1" : "0"
             n /= 2
         }
         while s.count < 32 {
