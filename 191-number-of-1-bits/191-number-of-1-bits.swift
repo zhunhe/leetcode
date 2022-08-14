@@ -6,7 +6,7 @@ class Solution {
             if n & 1 == 1 {
                 answer += 1
             }
-            n /= 2
+            n >>= 1
         }
         return answer
     }
