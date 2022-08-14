@@ -3,9 +3,7 @@ class Solution {
         var answer = 0
         var n = n
         while n > 0 {
-            if n & 1 == 1 {
-                answer += 1
-            }
+            answer += (n & 1 == 1) ? 1 : 0
             n >>= 1
         }
         return answer
