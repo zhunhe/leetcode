@@ -6,7 +6,7 @@ class Solution {
         for c in s {
             hash[c] = 1 + (hash[c] ?? 0)
         }
-        for (key, value) in hash {
+        for (_, value) in hash {
             if value % 2 == 1 {
                 hasOdd = true
                 answer += (value - 1)
