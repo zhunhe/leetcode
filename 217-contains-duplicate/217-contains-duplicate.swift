@@ -2,11 +2,10 @@ class Solution {
     func containsDuplicate(_ nums: [Int]) -> Bool {
         var dict = [Int: Int]()
         for index in 0 ..< nums.count {
-            if dict[nums[index]] != nil {
+            if let find = dict[nums[index]] {
                 return true
-            } else {
-                dict[nums[index]] = index
             }
+            dict[nums[index]] = index
         }
         return false
     }
