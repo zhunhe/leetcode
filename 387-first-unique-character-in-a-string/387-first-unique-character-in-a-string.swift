@@ -1,6 +1,6 @@
 class Solution {
     func firstUniqChar(_ s: String) -> Int {
-        let a = Int(Character("a").asciiValue!)
+        let a = 97
         var count = [Int](repeating: 0, count: 26)
 
         for c in s.utf8 {
