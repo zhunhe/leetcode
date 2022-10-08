@@ -4,12 +4,12 @@ class Solution {
         var count = 0
         for num in nums {
             if num == 0 {
-                answer = max(answer, count)
                 count = 0
             } else {
                 count += 1
+                answer = max(answer, count)
             }
         }
-        return max(answer, count)
+        return answer
     }
 }
