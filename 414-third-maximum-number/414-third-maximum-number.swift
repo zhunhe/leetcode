@@ -1,19 +1,25 @@
 class Solution {
     func thirdMax(_ nums: [Int]) -> Int {
-        var max = [Int](repeating: Int.min, count: 3)
-        var nums = Set(nums)
+        var first: Int?
+        var second: Int?
+        var third: Int?
+        
         for num in nums {
-            if num > max[0] {
-                max[2] = max[1]
-                max[1] = max[0]
-                max[0] = num
-            } else if num > max[1] {
-                max[2] = max[1]
-                max[1] = num
-            } else if num > max[2] {
-                max[2] = num
+            if (first != nil && first == num)
+            || (second != nil && second == num)
+            || (third != nil && third == num) { continue }
+            
+            if first == nil || num > first! {
+                third = second
+                second = first
+                first = num
+            } else if second == nil || num > second! {
+                third = second
+                second = num
+            } else if third == nil || num > third! {
+                third = num
             }
         }
-        return max[2] != Int.min ? max[2] : max[0]
+        return third ?? first!
     }
 }
