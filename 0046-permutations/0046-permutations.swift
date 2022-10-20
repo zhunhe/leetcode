@@ -1,25 +1,20 @@
 class Solution {
     func permute(_ nums: [Int]) -> [[Int]] {
         guard nums.count > 1 else { return [nums] }
+        var nums = nums
         var permutations = [[Int]]()
-        var visited = Array(repeating: false, count: nums.count)
-        var tmp = [Int]()
-
-        func dfs() {
-            if tmp.count == nums.count {
-                permutations.append(tmp)
+        func dfs(_ pos: Int) {
+            if pos == nums.count {
+                permutations.append(nums)
                 return
             }
-            for (idx, num) in nums.enumerated() {
-                if visited[idx] { continue }
-                visited[idx] = true
-                tmp.append(num)
-                dfs()
-                visited[idx] = false
-                tmp.removeLast()   
+            for i in pos ..< nums.count {
+                nums.swapAt(i, pos)
+                dfs(pos + 1)
+                nums.swapAt(i, pos)
             }
         }
-        dfs()
+        dfs(0)
         return permutations
     }
 }
