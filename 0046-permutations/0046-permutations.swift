@@ -3,10 +3,9 @@ class Solution {
         guard nums.count > 1 else { return [nums] }
         var permutations = [[Int]]()
         var visited = Array(repeating: false, count: nums.count)
+        var tmp = [Int]()
 
-        func dfs(_ tmp: [Int], _ visited: [Bool]) {
-            var tmp = tmp
-            var visited = visited
+        func dfs() {
             if tmp.count == nums.count {
                 permutations.append(tmp)
                 return
@@ -15,12 +14,12 @@ class Solution {
                 if visited[idx] { continue }
                 visited[idx] = true
                 tmp.append(num)
-                dfs(tmp, visited)
+                dfs()
                 visited[idx] = false
                 tmp.removeLast()   
             }
         }
-        dfs([], visited)
+        dfs()
         return permutations
     }
 }
