@@ -10,29 +10,25 @@
  */
 class Solution {
     func mergeTwoLists(_ list1: ListNode?, _ list2: ListNode?) -> ListNode? {
-        if list1 == nil && list2 == nil {return nil}
         let answer = ListNode()
-        var list1 = list1, list2 = list2, curAnswer = answer
+        var list1 = list1, list2 = list2, dummy = answer
         while list1 != nil || list2 != nil {
+            dummy.next = ListNode()
+            dummy = dummy.next!
             if list1 == nil {
-                curAnswer.val = list2!.val
-                list2 = list2?.next
+                dummy.val = list2!.val
+                list2 = list2!.next
             } else if list2 == nil {
-                curAnswer.val = list1!.val
-                list1 = list1?.next
+                dummy.val = list1!.val
+                list1 = list1!.next
             } else if list1!.val < list2!.val {
-                curAnswer.val = list1!.val
-                list1 = list1?.next
+                dummy.val = list1!.val
+                list1 = list1!.next
             } else {
-                curAnswer.val = list2!.val
-                list2 = list2?.next
+                dummy.val = list2!.val
+                list2 = list2!.next
             }
-            if list1 == nil && list2 == nil {
-                break
-            }
-            curAnswer.next = ListNode()
-            curAnswer = curAnswer.next!
         }
-        return answer
+        return answer.next
     }
 }
