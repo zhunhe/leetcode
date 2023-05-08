@@ -8,7 +8,6 @@ class Solution {
                 rightCount += 1
             }
         }
-        print(tickets.count * tickets[k], rightCount, diff)
         return tickets.count * tickets[k] - rightCount - diff
     }
 }
