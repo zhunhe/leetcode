@@ -24,10 +24,10 @@ class Solution {
             let curSum = sum * 2 + cur.val
             if cur.left == nil && cur.right == nil {
                 result += curSum
-            } else {
-                sumRootToLeafRecursive(node: cur.left, sum: curSum)
-                sumRootToLeafRecursive(node: cur.right, sum: curSum)    
+                return
             }
+            sumRootToLeafRecursive(node: cur.left, sum: curSum)
+            sumRootToLeafRecursive(node: cur.right, sum: curSum)
         }
         sumRootToLeafRecursive(node: root, sum: 0)
         return result
