@@ -16,9 +16,9 @@
 class Solution {
     var numbers: [Int] = []
     func minDiffInBST(_ root: TreeNode?) -> Int {
-        var result = 100000
         addNumbers(root)
-        numbers.sort()
+
+        var result = 100000
         for i in 0..<numbers.count - 1 {
             result = min(result, numbers[i + 1] - numbers[i])
         }
@@ -27,8 +27,8 @@ class Solution {
     
     func addNumbers(_ node: TreeNode?) {
         guard let cur = node else {return}
-        numbers.append(cur.val)
         addNumbers(cur.left)
+        numbers.append(cur.val)
         addNumbers(cur.right)
     }
 }
