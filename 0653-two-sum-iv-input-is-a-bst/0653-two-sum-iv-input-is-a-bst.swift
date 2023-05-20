@@ -14,15 +14,15 @@
  * }
  */
 class Solution {
-    var numbers = Set<Int>()
+    var numbers = [Int: Bool]()
     func findTarget(_ root: TreeNode?, _ k: Int) -> Bool {
         guard let cur = root else {
             return false
         }
-        if numbers.contains(k - cur.val) {
+        if let complement = numbers[k - cur.val], complement {
             return true
         }
-        numbers.insert(cur.val)
+        numbers[cur.val] = true
         return findTarget(cur.left, k) || findTarget(cur.right, k)
     }
 }
