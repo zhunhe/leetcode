@@ -17,7 +17,7 @@ class Solution {
     func sortedArrayToBST(_ nums: [Int]) -> TreeNode? {
         guard nums.count > 0 else { return nil }
         let mid = nums.count / 2
-        var answer = TreeNode(nums[mid])
+        let answer = TreeNode(nums[mid])
         answer.left = sortedArrayToBST(Array(nums[0..<mid]))
         answer.right = sortedArrayToBST(Array(nums[mid + 1..<nums.count]))
         return answer
