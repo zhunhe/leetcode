@@ -101,22 +101,19 @@ class Solution {
             pq.push(Data(score, i))
         }
         var result = [String](repeating: "", count: scores.count)
-        if !pq.isEmpty {
-            let gold = pq.pop()!
-            result[gold.index] = "Gold Medal"
-        }
-        if !pq.isEmpty {
-            let silver = pq.pop()!
-            result[silver.index] = "Silver Medal"
-        }
-        if !pq.isEmpty {
-            let bronze = pq.pop()!
-            result[bronze.index] = "Bronze Medal"
-        }
-        var num = 4
+        var num = 1
         while !pq.isEmpty {
             let th = pq.pop()!
-            result[th.index] = String(num)
+            switch num {
+            case 1:
+                result[th.index] = "Gold Medal"
+            case 2:
+                result[th.index] = "Silver Medal"
+            case 3:
+                result[th.index] = "Bronze Medal"
+            default:
+                result[th.index] = String(num)
+            }
             num += 1
         }
         return result
