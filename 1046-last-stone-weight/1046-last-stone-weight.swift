@@ -17,7 +17,7 @@ public struct PriorityQueue<T> {
         return nodes.first
     }
 
-    mutating func insert(_ element: T) {
+    mutating func push(_ element: T) {
         var index = nodes.count
         nodes.append(element)
         while index > 0, !comparer(nodes[index],nodes[(index - 1) / 2]) {
@@ -26,7 +26,7 @@ public struct PriorityQueue<T> {
         }
     }
 
-    mutating func delete() -> T? {
+    mutating func pop() -> T? {
         guard !nodes.isEmpty else {
             return nil
         }
@@ -40,10 +40,8 @@ public struct PriorityQueue<T> {
         _ = nodes.popLast()
 
         var index = 0
-
         while index < nodes.count {
-            let left = index * 2 + 1
-            let right = left + 1
+            let left = index * 2 + 1, right = left + 1
 
             if right < nodes.count {
                 if comparer(nodes[left], nodes[right]), !comparer(nodes[right], nodes[index]) {
@@ -80,17 +78,15 @@ class Solution {
     func lastStoneWeight(_ stones: [Int]) -> Int {
         var pq = PriorityQueue<Int>(comparer: <)
         for stone in stones {
-            pq.insert(stone)
+            pq.push(stone)
         }
         while pq.count > 1 {
-            let heaviest = pq.peek()!
-            pq.delete()
-            let secondHeaviest = pq.peek()!
-            pq.delete()
+            let heaviest = pq.pop()!
+            let secondHeaviest = pq.pop()!
             if heaviest > secondHeaviest {
-                pq.insert(heaviest - secondHeaviest)
+                pq.push(heaviest - secondHeaviest)
             }
         }
-        return pq.isEmpty ? 0 : pq.peek()!
+        return pq.isEmpty ? 0 : pq.pop()!
     }
 }
