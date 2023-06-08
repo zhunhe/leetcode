@@ -76,7 +76,7 @@ extension PriorityQueue where T: Comparable {
 
 class Solution {
     func lastStoneWeight(_ stones: [Int]) -> Int {
-        var pq = PriorityQueue<Int>(comparer: <)
+        var pq = PriorityQueue<Int>()
         for stone in stones {
             pq.push(stone)
         }
