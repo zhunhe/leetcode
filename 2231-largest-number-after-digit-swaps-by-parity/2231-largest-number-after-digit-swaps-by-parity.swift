@@ -77,7 +77,7 @@ class Solution {
     func largestInteger(_ num: Int) -> Int {
         var oddPQ = PriorityQueue<Int>()
         var evenPQ = PriorityQueue<Int>()
-        let nums = String(num).compactMap { Int(String($0))}
+        let nums = String(num).compactMap { Int(String($0)) }
         for i in 0..<nums.count {
             if nums[i] % 2 == 1 {
                 oddPQ.push(nums[i])
